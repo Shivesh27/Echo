@@ -15,4 +15,4 @@ class Student(models.Model):
 	studentid = models.IntegerField()
 	name = models.CharField(max_length = 50)
 	email = models.EmailField()
-	courses = models.ForeignKey(Course, on_delete = models.CASCADE)
+	courses = models.ManytoManyField(Course)
