@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from .models import Course, Student, Teacher, CustomUser, adminUser
+from .models import Course, Student, Teacher, CustomUser,PendingUsers, adminUser
 # Register your models here.
 
 class UserCreationForm(forms.ModelForm):
@@ -42,4 +42,5 @@ admin.site.register(CustomUser, UserModel)
 admin.site.register(adminUser)
 admin.site.register(Course)
 admin.site.register(Teacher)
+admin.site.register(PendingUsers)
 admin.site.register(Student)
