@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import UserRegisterForm
 from django.contrib.auth import login , logout
 from .LoginBackend import LoginBackend
+from django.contrib import messages
 from django.http import HttpResponse,HttpResponseRedirect
 # Create your views here.
 
@@ -10,11 +11,11 @@ def index(request):
 
 def register(request):
 	if request.method == 'POST':
-		form = UserRegisterForm(request.POST)
+		form = UserRegisterForm(request.POST,request.FILES)
 		if form.is_valid():
 			form.save()
-			messages.success(request,f'Account created! You can login now!')
-			return redirect('#')
+			messages.success(request,f'Your Request has been sent to the Management... We will get back to u shortly')
+			return redirect('/')
 	else:
 		form = UserRegisterForm()
 	return render(request,'register.html',{'form': form})
