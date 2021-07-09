@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .forms import UserRegisterForm
 from django.contrib.auth import login , logout
 from .LoginBackend import LoginBackend
 from django.http import HttpResponse,HttpResponseRedirect
@@ -7,6 +8,16 @@ from django.http import HttpResponse,HttpResponseRedirect
 def index(request):
     return render(request,"index.html")
 
+def register(request):
+	if request.method == 'POST':
+		form = UserRegisterForm(request.POST)
+		if form.is_valid():
+			form.save()
+			messages.success(request,f'Account created! You can login now!')
+			return redirect('#')
+	else:
+		form = UserRegisterForm()
+	return render(request,'register.html',{'form': form})
 
 def login_page(request):
     return render(request,"login.html")
