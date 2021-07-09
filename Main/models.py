@@ -31,5 +31,4 @@ class PendingUsers(models.Model):
 	yearofjoin = models.IntegerField()
 	contact = models.CharField(max_length = 10, blank = True)
 	idproof = models.ImageField(upload_to = 'id_pics')
-	REQUIRED = ['name', 'email', 'collegeid', 'enrollmentnumber', 'yearofjoin', 'idproof']
 	
